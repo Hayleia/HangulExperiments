@@ -25,6 +25,9 @@ for first, (seconds, comps) in medialComp.items():
 	for i in range(len(seconds)):
 		medialCompRev[comps[i]] = (first, seconds[i])
 
+with open("ksx1001.txt", "r", encoding="utf-8") as f:
+	ksx1001 = ''.join(f.readlines())
+
 def syllable(ini, med, fin):
 	return chr(ini*588 + med*28 + fin + 44032)
 

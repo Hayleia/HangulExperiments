@@ -21,6 +21,10 @@ def typeChar(s, c):
 			tple = finalComp[finals[final]]
 			return f'{s[:-1]}{syllable(initial, medial, finals.index(tple[1][tple[0].index(c)]))}'
 
+		# if there is a simple final and the new char is a medial, split the old syllable
+		if final != 0 and finals[final] not in finalCompRev and c in medials:
+			return f'{s[:-1]}{syllable(initial, medial, 0)}{syllable(initials.index(finals[final]), medials.index(c), 0)}'
+
 		# if there is a composed final and the new char is a medial, split the old final
 		if finals[final] in finalCompRev and c in medials:
 			return f'{s[:-1]}{syllable(initial, medial, finals.index(finalCompRev[finals[final]][0]))}{syllable(initials.index(finalCompRev[finals[final]][1]), medials.index(c), 0)}'
