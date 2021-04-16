@@ -12,6 +12,10 @@ def typeChar(s, c):
 	elif 44032 <= lastOrd <= 55203: # syllable
 		initial, medial, final = syllableBlocks(lastOrd)
 
+		# underscore is a sentinel in the "finals" string
+		if c == '_':
+			return f'{s}{c}'
+
 		# if there is no final and the new char is a final, merge
 		if final == 0 and c in finals:
 			return f'{s[:-1]}{syllable(initial, medial, finals.index(c))}'
